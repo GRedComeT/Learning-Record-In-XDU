@@ -1,4 +1,11 @@
 #pragma once
+#include<iostream>
+#include<fstream>
+#include<json/json.h>
+#include<time.h>
+#include<cstdlib>
+#include<algorithm>
+#include<unordered_set>
 int SimuWindows();
 void simulateMain();
 void RegisterCard();
