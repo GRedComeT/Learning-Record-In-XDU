@@ -1,18 +1,11 @@
-#include<iostream>
-#include<fstream>
-#include<json/json.h>
-#include<time.h>
-#include<cstdlib>
-#include<algorithm>
-#include<unordered_set>
 #include "Card.h"
 #include "Car.h"
 #include "main.h"
 using namespace std;
 
-extern const string GenderMap[] = { "", "ÄĞ", "Å®" };
-extern const string KindsMap[] = { "", "Ñ§Éú¿¨", "½ÌÊ¦¿¨", "¼ÒÊô¿¨" };
-extern const string NumberNameMap[] = { "", "Ñ§ºÅ", "¹¤×Ê¿¨ºÅ", "¿¨ºÅ" };
+extern const string GenderMap[] = { "", "ç”·", "å¥³" };
+extern const string KindsMap[] = { "", "å­¦ç”Ÿå¡", "æ•™å¸ˆå¡", "å®¶å±å¡" };
+extern const string NumberNameMap[] = { "", "å­¦å·", "å·¥èµ„å¡å·", "å¡å·" };
 extern const int carKindsMap[] = { 0, 30, 50 };
 extern const int Clocks[] = { 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
 
@@ -67,25 +60,25 @@ void createCar() {
     int Kind;
     string carType;
     string driverName;
-    cout << "        °à³µ×¢²á½çÃæ" << endl;
-    cout << "ÇëÊäÈë°à³µ³µÅÆ: ";
+    cout << "        ç­è½¦æ³¨å†Œç•Œé¢" << endl;
+    cout << "è¯·è¾“å…¥ç­è½¦è½¦ç‰Œ: ";
     cin >> Car_Number;
-    cout << "ÇëÑ¡Ôñ°à³µºËÔØÈËÊı('1'Îª30ÈË, '2'Îª50ÈË): ";
+    cout << "è¯·é€‰æ‹©ç­è½¦æ ¸è½½äººæ•°('1'ä¸º30äºº, '2'ä¸º50äºº): ";
     L2:
     cin >> Kind;
     if (Kind != 1 && Kind != 2) {
-        cout << "ÄúµÄÊäÈë²»ÕıÈ·, ÇëÖØĞÂÊäÈëºËÔØÈËÊı('1'Îª30ÈË, '2'Îª50ÈË): ";
+        cout << "æ‚¨çš„è¾“å…¥ä¸æ­£ç¡®, è¯·é‡æ–°è¾“å…¥æ ¸è½½äººæ•°('1'ä¸º30äºº, '2'ä¸º50äºº): ";
         goto L2;
     }
-    cout << "ÇëÊäÈë°à³µµÄĞÍºÅ: ";
+    cout << "è¯·è¾“å…¥ç­è½¦çš„å‹å·: ";
     cin >> carType;
-    cout << "ÇëÊäÈë¼İÊ»Ô±µÄĞÕÃû: ";
+    cout << "è¯·è¾“å…¥é©¾é©¶å‘˜çš„å§“å: ";
     cin >> driverName;
     system("cls");
-    cout << "¹§Ï²Äú, °à³µ×¢²á³É¹¦" << endl;
+    cout << "æ­å–œæ‚¨, ç­è½¦æ³¨å†ŒæˆåŠŸ" << endl;
     Cars.emplace_back(Car_Number, carType, Kind, driverName);
     Cars.back().showInfo();
-    cout << "µÈ´ıÌø×ªÖÁÖ÷½çÃæ";
+    cout << "ç­‰å¾…è·³è½¬è‡³ä¸»ç•Œé¢";
     WaitToJump(5);
 }
 
@@ -100,7 +93,7 @@ void simulateMain() {
         } while (car1 == car2);
     }
     if (Cars.size() == 0) {
-        cout << "»¹Î´ÓĞ°à³µ×¢²á, ÇëÏÈ×¢²á°à³µ, ¼´½«Ìø×ªÉÏÒ»¼¶" << endl;
+        cout << "è¿˜æœªæœ‰ç­è½¦æ³¨å†Œ, è¯·å…ˆæ³¨å†Œç­è½¦, å³å°†è·³è½¬ä¸Šä¸€çº§" << endl;
         WaitToJump(2);
         return;
     }
@@ -120,7 +113,7 @@ void simulateMain() {
             if (store[memberStore[*i]].takeBus()) {
                 nowsum++;
             }
-            cout << "µ±Ç°ÒÑÉÏ³µÈËÊı: " << nowsum << endl;
+            cout << "å½“å‰å·²ä¸Šè½¦äººæ•°: " << nowsum << endl;
         }
     }
     cout << "\n\n" << endl;
@@ -132,11 +125,11 @@ void simulateMain() {
             if (store[memberStore[*i]].takeBus()) {
                 nowsum++;
             }
-            cout << "µ±Ç°ÒÑÉÏ³µÈËÊı: " << nowsum << endl;
+            cout << "å½“å‰å·²ä¸Šè½¦äººæ•°: " << nowsum << endl;
         }
     }
     timeClock++;
-    cout << "ÊäÈë0½áÊøÄ£Äâ: ";
+    cout << "è¾“å…¥0ç»“æŸæ¨¡æ‹Ÿ: ";
     cin >> car1;
     if (!car1) return;
 }
@@ -232,21 +225,21 @@ string getCognateNumber() {
 }
 
 int MainWindows() {
-    cout << "        " << "Ğ£Ô°Ò»¿¨Í¨³Ë³µÏµÍ³" << endl;
-    cout << "ÇëÑ¡ÔñĞèÒªµÄ¹¦ÄÜ(ÊäÈë¶ÔÓ¦µÄ±àºÅ):" << endl;
-    cout << "1.×¢²á¿¨ºÅ        2.²éÑ¯ĞÅÏ¢" << endl;
-    cout << "3.³äÖµ½ğ¶î        4.×¢Ïú¿¨ºÅ" << endl;
-    cout << "5.Ä£Äâ·¢³µ        6.±£´æ²¢ÍË³ö" << endl;
+    cout << "        " << "æ ¡å›­ä¸€å¡é€šä¹˜è½¦ç³»ç»Ÿ" << endl;
+    cout << "è¯·é€‰æ‹©éœ€è¦çš„åŠŸèƒ½(è¾“å…¥å¯¹åº”çš„ç¼–å·):" << endl;
+    cout << "1.æ³¨å†Œå¡å·        2.æŸ¥è¯¢ä¿¡æ¯" << endl;
+    cout << "3.å……å€¼é‡‘é¢        4.æ³¨é”€å¡å·" << endl;
+    cout << "5.æ¨¡æ‹Ÿå‘è½¦        6.ä¿å­˜å¹¶é€€å‡º" << endl;
     int indication;
     cin >> indication;
     return indication;
 }
 
 int SimuWindows() {
-    cout << "        " << "³Ë³µÄ£ÄâÏµÍ³" << endl;
-    cout << "ÇëÑ¡ÔñĞèÒªµÄ¹¦ÄÜ(ÊäÈë¶ÔÓ¦µÄ±àºÅ):" << endl;
-    cout << "1.×¢²á°à³µ        2.¿ªÊ¼Ä£Äâ" << endl;
-    cout << "3.±£´æ²¢ÍË³ö" << endl;
+    cout << "        " << "ä¹˜è½¦æ¨¡æ‹Ÿç³»ç»Ÿ" << endl;
+    cout << "è¯·é€‰æ‹©éœ€è¦çš„åŠŸèƒ½(è¾“å…¥å¯¹åº”çš„ç¼–å·):" << endl;
+    cout << "1.æ³¨å†Œç­è½¦        2.å¼€å§‹æ¨¡æ‹Ÿ" << endl;
+    cout << "3.ä¿å­˜å¹¶é€€å‡º" << endl;
     int indication;
     cin >> indication;
     return indication;
@@ -260,36 +253,36 @@ void RegisterCard() {
     
     string ID_Number;
     string Institution = "";
-    cout << "        Ò»¿¨Í¨×¢²á½çÃæ" << endl;
-    cout << "ÇëÊäÈëÄúµÄĞÕÃû: ";
+    cout << "        ä¸€å¡é€šæ³¨å†Œç•Œé¢" << endl;
+    cout << "è¯·è¾“å…¥æ‚¨çš„å§“å: ";
     cin >> Name; 
-    cout << "ÇëÑ¡ÔñÄúµÄĞÔ±ğ('1'ÎªÄĞĞÔ, '2'ÎªÅ®ĞÔ): ";
+    cout << "è¯·é€‰æ‹©æ‚¨çš„æ€§åˆ«('1'ä¸ºç”·æ€§, '2'ä¸ºå¥³æ€§): ";
     L2:
     cin >> Gender;
     if (Gender != 1 && Gender != 2) {
-        cout << "ÄúµÄÊäÈë²»ÕıÈ·, ÇëÖØĞÂÊäÈëĞÔ±ğ('1'ÎªÄĞĞÔ, '2'ÎªÅ®ĞÔ): ";
+        cout << "æ‚¨çš„è¾“å…¥ä¸æ­£ç¡®, è¯·é‡æ–°è¾“å…¥æ€§åˆ«('1'ä¸ºç”·æ€§, '2'ä¸ºå¥³æ€§): ";
         goto L2;
     }
-    cout << "ÇëÊäÈëÄúÒª°ìÀí¿¨µÄÖÖÀà('1'ÎªÑ§Éú¿¨, '2'Îª½ÌÊ¦¿¨, '3'Îª¼ÒÊô¿¨): ";
+    cout << "è¯·è¾“å…¥æ‚¨è¦åŠç†å¡çš„ç§ç±»('1'ä¸ºå­¦ç”Ÿå¡, '2'ä¸ºæ•™å¸ˆå¡, '3'ä¸ºå®¶å±å¡): ";
     L1:
     cin >> Kind;
     switch (Kind) {
     case 1:
-        cout << "ÇëÊäÈëÄúµÄÑ§ºÅ: ";
+        cout << "è¯·è¾“å…¥æ‚¨çš„å­¦å·: ";
         cin >> ID_Number;
         if (store.count(ID_Number)) {
-            cout << "¸Ã¿¨ºÅÒÑ¾­×¢²á, ÎŞ·¨ÖØ¸´×¢²á, ¼´½«Ìø×ªÖÁÖ÷½çÃæ" << endl;
+            cout << "è¯¥å¡å·å·²ç»æ³¨å†Œ, æ— æ³•é‡å¤æ³¨å†Œ, å³å°†è·³è½¬è‡³ä¸»ç•Œé¢" << endl;
             WaitToJump(3);
             return;
         }
-        cout << "ÇëÊäÈëÄúµÄÑ§Ôº: ";
+        cout << "è¯·è¾“å…¥æ‚¨çš„å­¦é™¢: ";
         cin >> Institution;
         store[ID_Number] = Card(Name, Gender, Kind, ID_Number, Institution);
         break;
     case 2:
-        cout << "ÇëÊäÈëÄúµÄ¹¤×ÊºÅ: ";
+        cout << "è¯·è¾“å…¥æ‚¨çš„å·¥èµ„å·: ";
         cin >> ID_Number;
-        cout << "ÇëÊäÈëÄúµÄÑ§Ôº: ";
+        cout << "è¯·è¾“å…¥æ‚¨çš„å­¦é™¢: ";
         cin >> Institution;
         store[ID_Number] = Card(Name, Gender, Kind, ID_Number, Institution);
         break;
@@ -298,70 +291,70 @@ void RegisterCard() {
         store[ID_Number] = Card(Name, Gender, Kind, ID_Number, Institution, takeTimes);
         break;
     default:
-        cout << "ÄúµÄÊäÈë²»ÕıÈ·, ÇëÖØĞÂÊäÈë¿¨µÄÖÖÀà('1'ÎªÑ§Éú¿¨, '2'Îª½ÌÊ¦¿¨, '3'Îª¼ÒÊô¿¨): ";
+        cout << "æ‚¨çš„è¾“å…¥ä¸æ­£ç¡®, è¯·é‡æ–°è¾“å…¥å¡çš„ç§ç±»('1'ä¸ºå­¦ç”Ÿå¡, '2'ä¸ºæ•™å¸ˆå¡, '3'ä¸ºå®¶å±å¡): ";
         goto L1;
     }
     system("cls");
-    cout << "¹§Ï²Äú, ³Ë³µ¿¨×¢²á³É¹¦" << endl;
+    cout << "æ­å–œæ‚¨, ä¹˜è½¦å¡æ³¨å†ŒæˆåŠŸ" << endl;
     store[ID_Number].showAllInfo();
-    cout << "µÈ´ıÌø×ªÖÁÖ÷½çÃæ";
+    cout << "ç­‰å¾…è·³è½¬è‡³ä¸»ç•Œé¢";
     WaitToJump(5);
 }
 
 void SearchInfo() {
     string Key;
-    cout << "ÇëÊäÈëÄúĞèÒª²éÑ¯µÄ¿¨ºÅ(Ñ§ºÅ\\¹¤×Ê¿¨ºÅ): ";
+    cout << "è¯·è¾“å…¥æ‚¨éœ€è¦æŸ¥è¯¢çš„å¡å·(å­¦å·\\å·¥èµ„å¡å·): ";
     L3:
     cin >> Key;
     if (Key[0] == 'q') return;
     if (store.count(Key) == 0) {
-        cout << "ÄúÊäÈëµÄ¿¨ºÅ²»´æÔÚ, ÇëÖØĞÂÊäÈë, »ò¼üÈëq·µ»ØÖ÷²Ëµ¥: ";
+        cout << "æ‚¨è¾“å…¥çš„å¡å·ä¸å­˜åœ¨, è¯·é‡æ–°è¾“å…¥, æˆ–é”®å…¥qè¿”å›ä¸»èœå•: ";
         goto L3;
     }
     store[Key].showAllInfo();
-    cout << "¼üÈëq·µ»ØÖ÷²Ëµ¥: ";
+    cout << "é”®å…¥qè¿”å›ä¸»èœå•: ";
     while (cin >> Key && Key[0] != 'q');
 }
 
 void TopUp() {
     string Key;
     int Money;
-    cout << "        Ò»¿¨Í¨³äÖµ½çÃæ" << endl;
-    cout << "ÇëÊäÈëÄúÒª³äÖµµÄ¿¨ºÅ(Ñ§ºÅ\\¹¤×Ê¿¨ºÅ): ";
+    cout << "        ä¸€å¡é€šå……å€¼ç•Œé¢" << endl;
+    cout << "è¯·è¾“å…¥æ‚¨è¦å……å€¼çš„å¡å·(å­¦å·\\å·¥èµ„å¡å·): ";
     L3:
     cin >> Key;
     if (Key[0] == 'q') return;
     if (store.count(Key) == 0) {
-        cout << "ÄúÊäÈëµÄ¿¨ºÅ²»´æÔÚ, ÇëÖØĞÂÊäÈë, »ò¼üÈëq·µ»ØÖ÷²Ëµ¥: ";
+        cout << "æ‚¨è¾“å…¥çš„å¡å·ä¸å­˜åœ¨, è¯·é‡æ–°è¾“å…¥, æˆ–é”®å…¥qè¿”å›ä¸»èœå•: ";
         goto L3;
     }
-    cout << "ÇëÊäÈëÄúÒª³äÖµµÄ½ğ¶î: ";
+    cout << "è¯·è¾“å…¥æ‚¨è¦å……å€¼çš„é‡‘é¢: ";
     cin >> Money;
     store[Key].Topup(Money);
-    cout << "¹§Ï²Äú, ³äÖµ³É¹¦.";
+    cout << "æ­å–œæ‚¨, å……å€¼æˆåŠŸ.";
     store[Key].showBalance();
-    cout << "¼üÈëq·µ»ØÖ÷²Ëµ¥: ";
+    cout << "é”®å…¥qè¿”å›ä¸»èœå•: ";
     while (cin >> Key && Key[0] != 'q');
 }
 
 void DeleteCard() {
     string Key;
-    cout << "ÇëÊäÈëÄúĞèÒª×¢ÏúµÄ¿¨ºÅ(Ñ§ºÅ\\¹¤×Ê¿¨ºÅ): ";
+    cout << "è¯·è¾“å…¥æ‚¨éœ€è¦æ³¨é”€çš„å¡å·(å­¦å·\\å·¥èµ„å¡å·): ";
     L3:
     cin >> Key;
     if (Key[0] == 'q') return;
     if (store.count(Key) == 0) {
-        cout << "ÄúÊäÈëµÄ¿¨ºÅ²»´æÔÚ, ÇëÖØĞÂÊäÈë, »ò¼üÈëq·µ»ØÖ÷²Ëµ¥: ";
+        cout << "æ‚¨è¾“å…¥çš„å¡å·ä¸å­˜åœ¨, è¯·é‡æ–°è¾“å…¥, æˆ–é”®å…¥qè¿”å›ä¸»èœå•: ";
         goto L3;
     }
     store.erase(Key);
-    cout << "×¢Ïú³É¹¦" << endl;
-    cout << "µÈ´ıÌø×ªÖÁÖ÷½çÃæ";
+    cout << "æ³¨é”€æˆåŠŸ" << endl;
+    cout << "ç­‰å¾…è·³è½¬è‡³ä¸»ç•Œé¢";
     WaitToJump(5);
 }
 
 void WindowsErrorTrap() {
-    cout << "ÊäÈë´íÎó, ÇëÖØĞÂÊäÈë, µÈ´ıÌø×ª" << endl;
+    cout << "è¾“å…¥é”™è¯¯, è¯·é‡æ–°è¾“å…¥, ç­‰å¾…è·³è½¬" << endl;
     WaitToJump(3);
 }
 
