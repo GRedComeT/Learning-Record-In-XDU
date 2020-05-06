@@ -16,4 +16,4 @@
 
 # Notice
 >
-> There are something wrong that I can not upload the file such as Reports, so I will try again for a time.
+> Due to COVID-19, some resources in school's computer can not upload right now. Please wait for the coronavirus ends.
