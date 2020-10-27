@@ -16,4 +16,4 @@
 
 # Notice
 >
-> Due to COVID-19, some resources in school's computer can not upload right now. Please wait for the coronavirus ends.
+> Due to COVID-19, some resources in school's computer can not upload right now. Please wait for the coronavirus ends.??
